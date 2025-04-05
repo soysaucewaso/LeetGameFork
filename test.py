@@ -9,7 +9,7 @@ pygame.display.set_caption("TMX Map Test")
 clock = pygame.time.Clock()
 
 # Load your TMX map
-tmx_map = load_pygame("The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Beginning Fields.tmx")
+tmx_map = load_pygame("/Users/rithishsivaraj/Desktop/DiamondHacksRepo/DiamondHacks/The Fan-tasy Tileset (Free)/Tiled/Tilemaps/Beginning Fields.tmx")
 
 def draw_tmx_map():
     for layer in tmx_map.visible_layers:
