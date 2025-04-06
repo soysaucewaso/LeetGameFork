@@ -9,9 +9,11 @@ clock = pygame.time.Clock()
 tmx_data = load_pygame("CollisionTest.tmx")  # Replace with your actual .tmx file
 
 # Character setup
-player_image = pygame.image.load("Character_Walk.png").convert_alpha()  # Use your sprite
+player_image = pygame.image.load("The Fan-tasy Tileset (Free)/Art/Characters/Main Character/Character_Walk.png").convert_alpha()  # Use your sprite
 TILE_SIZE = tmx_data.tilewidth
-player_x, player_y = 2, 2  # Starting tile position
+player_x, player_y = 8, 8  # Starting tile position
+
+current_frame = 0
 
 def is_collidable(x, y):
     tile_gid = tmx_data.get_tile_gid(x, y, 0)
@@ -48,13 +50,20 @@ while running:
     # Draw map tiles
     for layer in tmx_data.visible_layers:
         if hasattr(layer, "tiles"):
-            for x, y, gid in layer.tiles():
+            for x, y, gid in layer:
+                x-=10
+                y-=10
+                print((x,y,gid))
                 tile = tmx_data.get_tile_image_by_gid(gid)
                 if tile:
-                    screen.blit(tile, (x * TILE_SIZE, y * TILE_SIZE))
+                    frame_rect = pygame.Rect(0, 0, TILE_SIZE, TILE_SIZE)
+                    screen.blit(tile, (x * TILE_SIZE, y * TILE_SIZE), area=frame_rect)
+                else:
+                    print((x,y,gid))
 
     # Draw character
-    screen.blit(player_image, (player_x * TILE_SIZE, player_y * TILE_SIZE))
+    frame_rect = pygame.Rect(current_frame * TILE_SIZE, 0, TILE_SIZE, TILE_SIZE)
+    screen.blit(player_image, (player_x * TILE_SIZE, player_y * TILE_SIZE), area=frame_rect)
 
     pygame.display.flip()
     clock.tick(10)
