@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.10" tiledversion="1.10.1" name="Atlas_Trees_Bushes" tilewidth="16" tileheight="16" tilecount="144" columns="24">
+  <properties>
+    <property name="collidable" type="bool" value="true"/>
+  </properties>
  <image source="../../Art/Trees and Bushes/Atlas/Trees_Bushes.png" width="384" height="96"/>
  <tile id="42">
   <objectgroup draworder="index" id="2">
@@ -23,6 +26,9 @@
   </objectgroup>
  </tile>
  <tile id="46">
+  <properties>
+    <property name="collidable" type="bool" value="true"/>
+  </properties>
   <objectgroup draworder="index" id="2">
    <object id="1" x="15.9565" y="14.9565">
     <polygon points="0,0 -9,-0.0625 -11,-1 -14.125,-4.125 -14.125,-6.0625 -10,-10 -7.9375,-11.0625 -0.125,-11.125"/>
